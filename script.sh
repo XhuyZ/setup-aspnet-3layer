@@ -58,11 +58,11 @@ cd ..
 # Adding Sample Library
 cd DAL
 dotnet add package AutoMapper
-dotnet add package Microsoft.EntityFrameWork -v8.0.11
-dotnet add package Microsoft.EntityFrameWorkCore.Design -v8.0.11
-dotnet add package Microsoft.EntityFrameWorkCore.Tools -v8.0.11
+dotnet add package Microsoft.EntityFrameWork -v 8.0.11
+dotnet add package Microsoft.EntityFrameWorkCore.Design -v 8.0.11
+dotnet add package Microsoft.EntityFrameWorkCore.Tools -v 8.0.11
 dotnet add package NewtonSoft.Json
-dotnet add package Pomelo.EntityFrameWorkCore.MySql -v8.0.2
+dotnet add package Pomelo.EntityFrameWorkCore.MySql -v 8.0.2
 dotnet add package System.Configuration.ConfigurationManager
 dotnet add package System.Linq
 dotnet add package System.Linq.Queryable
