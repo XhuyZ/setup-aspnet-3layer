@@ -55,17 +55,15 @@ mkdir -p Helpers
 rm -rf Class1.cs
 # Go to root solution
 cd ..
-
-# # Create example files
-# echo "namespace $PROJECT_NAME.Common.Models { public class SampleModel { public int Id { get; set; } public string Name { get; set; } } }" > $PROJECT_NAME.Common/Models/SampleModel.cs
-#
-# echo "namespace $PROJECT_NAME.BLL.Services { public class SampleService { } }" > $PROJECT_NAME.BLL/Services/SampleService.cs
-#
-# echo "namespace $PROJECT_NAME.DAL.Repositories { public class SampleRepository { } }" > $PROJECT_NAME.DAL/Repositories/SampleRepository.cs
-#
-# echo "using Microsoft.AspNetCore.Mvc; namespace $PROJECT_NAME.API.Controllers { [Route(\"api/[controller]\")] [ApiController] public class SampleController : ControllerBase { [HttpGet] public string Get() { return \"Hello World!\"; } } }" > $PROJECT_NAME.API/Controllers/SampleController.cs
-#
-# # Restore dependencies
-# dotnet restore
-#
-# echo "Setup complete! Navigate to $PROJECT_NAME and start coding."
+# Adding Sample Library
+cd DAL
+dotnet add package AutoMapper
+dotnet add package Microsoft.EntityFrameWork -v8.0.11
+dotnet add package Microsoft.EntityFrameWorkCore.Design -v8.0.11
+dotnet add package Microsoft.EntityFrameWorkCore.Tools -v8.0.11
+dotnet add NewtonSoft.Json
+dotnet add Pomelo.EntityFrameWorkCore.MySql -v8.0.2
+dotnet add System.Configuration.ConfigurationManager
+dotnet add System.Linq
+dotnet add System.Linq.Queryable
+dotnet add System.Text.Json
