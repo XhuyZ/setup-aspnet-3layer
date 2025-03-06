@@ -109,7 +109,7 @@ total_folders=3
 current_folder=0
 display_progress $total_folders $current_folder "Creating DAL folders"
 cd DAL
-mkdir -p Configuration Context Entities Migrations Repositories/{Interfaces,Implementation}
+mkdir -p Configuration Context Entities Migrations Repositories/{Interfaces,Implementations}
 rm -rf Class1.cs
 cd ..
 current_folder=$((current_folder + 1))
