@@ -43,6 +43,12 @@ mkdir -p Interfaces
 mkdir -p Mappers
 mkdir -p Services
 rm -rf Class1.cs
+# Common file structure
+mkdir -p Constants
+mkdir -p Enums
+mkdir -p Extensions
+mkdir -p Helpers
+rm -rf Class1.cs
 
 # # Create example files
 # echo "namespace $PROJECT_NAME.Common.Models { public class SampleModel { public int Id { get; set; } public string Name { get; set; } } }" > $PROJECT_NAME.Common/Models/SampleModel.cs
