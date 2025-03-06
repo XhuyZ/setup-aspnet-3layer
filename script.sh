@@ -207,6 +207,18 @@ for package in "${api_packages[@]}"; do
   current_package=$((current_package + 1))
   display_progress $total_api_packages $current_package "Installing API: $package"
 done
+cd ..
+cd ..
+# Run setup scripts for DAL, BLL, and Common
+log_message "Running additional setup scripts..."
+# Ensure scripts have execute permissions
+chmod +x setup_DAL.sh setup_BLL.sh setup_Common.sh
+# Execute scripts
+./setup_DAL.sh
+./setup_BLL.sh
+./setup_Common.sh
+
+log_message "All setup scripts completed successfully!"
 move_cursor $STATUS_ROW 0
 printf "\033[K"
 move_cursor $PROGRESS_ROW 0
