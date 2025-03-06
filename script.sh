@@ -37,18 +37,24 @@ rm -rf Class1.cs
 # Go to root solution
 cd ..
 # BLL (Business Logic Layer)
+cd BLL
 mkdir -p DTOs
 mkdir -p Exceptions
 mkdir -p Interfaces
 mkdir -p Mappers
 mkdir -p Services
 rm -rf Class1.cs
+# Go to root solution
+cd ..
 # Common file structure
+cd Common
 mkdir -p Constants
 mkdir -p Enums
 mkdir -p Extensions
 mkdir -p Helpers
 rm -rf Class1.cs
+# Go to root solution
+cd ..
 
 # # Create example files
 # echo "namespace $PROJECT_NAME.Common.Models { public class SampleModel { public int Id { get; set; } public string Name { get; set; } } }" > $PROJECT_NAME.Common/Models/SampleModel.cs
