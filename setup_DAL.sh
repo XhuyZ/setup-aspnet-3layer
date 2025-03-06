@@ -1,30 +1,17 @@
 #!/bin/bash
-
-# Lấy thư mục chứa script.sh (cùng cấp với setup_DAL.sh)
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-# Tìm thư mục DAL/ trong BASE_DIR
 DAL_DIR=$(find "$BASE_DIR" -maxdepth 2 -type d -name "DAL" | head -n 1)
-
-# Kiểm tra nếu không tìm thấy DAL
 if [ -z "$DAL_DIR" ]; then
-  echo "❌ Không tìm thấy thư mục DAL/. Hãy chạy script.sh trước!"
+  echo "❌ Could not find the DAL/ directory. Please run script.sh first!"
   exit 1
 fi
-
-echo "✅ Tìm thấy thư mục DAL tại: $DAL_DIR"
-
-# Xác định các đường dẫn trong DAL
+echo "✅ Found the DAL/ directory at: $DAL_DIR"
 ENTITIES_DIR="$DAL_DIR/Entities"
 CONFIG_DIR="$DAL_DIR/Configuration"
 REPO_INTERFACE_DIR="$DAL_DIR/Repositories/Interfaces"
 REPO_IMPL_DIR="$DAL_DIR/Repositories/Implementations"
 CONTEXT_DIR="$DAL_DIR/Context"
-
-# Đảm bảo các thư mục tồn tại
 mkdir -p "$ENTITIES_DIR" "$CONFIG_DIR" "$REPO_INTERFACE_DIR" "$REPO_IMPL_DIR" "$CONTEXT_DIR"
-
-# 🟢 Tạo Entity: Item.cs
 cat >"$ENTITIES_DIR/Item.cs" <<EOL
 namespace DAL.Entities
 {
@@ -37,8 +24,6 @@ namespace DAL.Entities
     }
 }
 EOL
-
-# 🟢 Tạo Entity: Category.cs
 cat >"$ENTITIES_DIR/Category.cs" <<EOL
 namespace DAL.Entities
 {
@@ -50,8 +35,6 @@ namespace DAL.Entities
     }
 }
 EOL
-
-# 🟢 Tạo Configuration: ItemConfiguration.cs
 cat >"$CONFIG_DIR/ItemConfiguration.cs" <<EOL
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -79,8 +62,6 @@ namespace DAL.Configuration
     }
 }
 EOL
-
-# 🟢 Tạo Configuration: CategoryConfiguration.cs
 cat >"$CONFIG_DIR/CategoryConfiguration.cs" <<EOL
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -104,8 +85,6 @@ namespace DAL.Configuration
     }
 }
 EOL
-
-# 🟢 Tạo AppDBContext.cs
 cat >"$CONTEXT_DIR/AppDBContext.cs" <<EOL
 using DAL.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -128,8 +107,6 @@ namespace DAL.Context
     }
 }
 EOL
-
-# 🟢 Tạo Interface: IItemRepository.cs
 cat >"$REPO_INTERFACE_DIR/IItemRepository.cs" <<EOL
 using DAL.Entities;
 
@@ -145,8 +122,6 @@ namespace DAL.Repositories.Interfaces
     }
 }
 EOL
-
-# 🟢 Tạo Interface: ICategoryRepository.cs
 cat >"$REPO_INTERFACE_DIR/ICategoryRepository.cs" <<EOL
 using DAL.Entities;
 
@@ -162,8 +137,6 @@ namespace DAL.Repositories.Interfaces
     }
 }
 EOL
-
-# 🟢 Tạo Implementation: ItemRepository.cs
 cat >"$REPO_IMPL_DIR/ItemRepository.cs" <<EOL
 using DAL.Context;
 using DAL.Entities;
@@ -215,8 +188,6 @@ namespace DAL.Repositories.Implementations
     }
 }
 EOL
-
-# 🟢 Tạo Implementation: CategoryRepository.cs
 cat >"$REPO_IMPL_DIR/CategoryRepository.cs" <<EOL
 using DAL.Context;
 using DAL.Entities;
@@ -269,4 +240,4 @@ namespace DAL.Repositories.Implementations
 }
 EOL
 
-echo "✅ Setup DAL hoàn thành! Các file đã được tạo trong $DAL_DIR."
+echo "✅ Setup DAL completed! The files have been created in $DAL_DIR."
