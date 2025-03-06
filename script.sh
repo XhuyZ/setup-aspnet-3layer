@@ -56,9 +56,13 @@ rm -rf Class1.cs
 # Go to root solution
 cd ..
 # Adding Sample Library
-cd DAL
-dotnet add package AutoMapper
-dotnet add package Microsoft.EntityFrameWork -v 8.0.11
+# Navigate to the DAL directory
+cd DAL || {
+  echo "DAL directory not found! Exiting..."
+  exit 1
+}
+dotnet add package AutoMapper -v 14.0.0
+dotnet add package Microsoft.EntityFrameWorkCore -v 8.0.11
 dotnet add package Microsoft.EntityFrameWorkCore.Design -v 8.0.11
 dotnet add package Microsoft.EntityFrameWorkCore.Tools -v 8.0.11
 dotnet add package NewtonSoft.Json
@@ -67,3 +71,44 @@ dotnet add package System.Configuration.ConfigurationManager
 dotnet add package System.Linq
 dotnet add package System.Linq.Queryable
 dotnet add package System.Text.Json
+echo "All packages installed successfully in the DAL project."
+# Go to root solution
+cd ..
+# Navigate to the BLL directory
+cd BLL || {
+  echo "BLL directory not found! Exiting..."
+  exit 1
+}
+# Add required NuGet packages
+dotnet add package AutoMapper -v 14.0.0
+dotnet add package MailKit -v 4.10.0
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer -v 8.0.11
+dotnet add package Microsoft.IdentityModel.Tokens -v 8.5.0
+dotnet add package MimeKit -v 4.10.0
+dotnet add package System.IdentityModel.Tokens.Jwt -v 8.5.0
+echo "All packages installed successfully in the BLL project."
+# Go to root solution
+cd ..
+# Navigate to the API directory
+cd API || {
+  echo "API directory not found! Exiting..."
+  exit 1
+}
+# Add required NuGet packages
+dotnet add package AutoMapper -v 14.0.0
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer -v 8.0.11
+dotnet add package Microsoft.AspNetCore.OpenApi -v 8.0.12
+dotnet add package Microsoft.EntityFrameworkCore -v 8.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Design -v 8.0.11
+dotnet add package Microsoft.EntityFrameworkCore.Tools -v 8.0.11
+dotnet add package Microsoft.IdentityModel.Tokens -v 8.5.0
+dotnet add package Pomelo.EntityFrameworkCore.MySql -v 8.0.2
+dotnet add package Swashbuckle.AspNetCore -v 7.2.0
+dotnet add package Swashbuckle.AspNetCore.Annotations -v 7.2.0
+dotnet add package Swashbuckle.AspNetCore.Swagger -v 7.2.0
+dotnet add package Swashbuckle.AspNetCore.SwaggerGen -v 7.2.0
+dotnet add package Swashbuckle.AspNetCore.SwaggerUI -v 7.2.0
+dotnet add package System.Configuration.ConfigurationManager -v 9.0.2
+dotnet add package System.IdentityModel.Tokens.Jwt -v 8.5.0
+dotnet add package System.Linq -v 4.3.0
+echo "All packages installed successfully in the API project."
