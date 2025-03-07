@@ -117,7 +117,7 @@ namespace DAL.Context
     {
         public AppDBContext CreateDbContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<AppDBContext>();
             optionsBuilder.UseMySql(
                 "Server=localhost;Database=Testnet;Port=3306;User Id=root;Password=12345;",
                 new MySqlServerVersion(new Version(8, 0, 2)) // Replace with your MySQL server version
