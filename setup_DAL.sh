@@ -54,9 +54,9 @@ namespace DAL.Configuration
 
             // Seed Data
             builder.HasData(
-                new Item { Id = 1, Name = "Paracetamol", CategoryId = 1 },
-                new Item { Id = 2, Name = "Aspirin", CategoryId = 1 },
-                new Item { Id = 3, Name = "Vitamin C", CategoryId = 2 }
+                new Item { Id = 1, Name = "Apple", CategoryId = 1 },
+                new Item { Id = 2, Name = "Orange", CategoryId = 1 },
+                new Item { Id = 3, Name = "Pudding", CategoryId = 2 }
             );
         }
     }
@@ -78,8 +78,8 @@ namespace DAL.Configuration
 
             // Seed Data
             builder.HasData(
-                new Category { Id = 1, Name = "Medicine" },
-                new Category { Id = 2, Name = "Supplement" }
+                new Category { Id = 1, Name = "Fruit" },
+                new Category { Id = 2, Name = "Cake" }
             );
         }
     }
@@ -103,6 +103,27 @@ namespace DAL.Context
             modelBuilder.ApplyConfiguration(new DAL.Configuration.ItemConfiguration());
             modelBuilder.ApplyConfiguration(new DAL.Configuration.CategoryConfiguration());
             base.OnModelCreating(modelBuilder);
+        }
+    }
+}
+EOL
+cat >"$CONTEXT_DIR/AppDBContextFactory.cs" <<EOL
+using DAL.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+namespace DAL.Context
+{
+    public class AppDBContextFactory : IDesignTimeDbContextFactory<AppDBContext>
+    {
+        public AppDBContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            optionsBuilder.UseMySql(
+                "Server=localhost;Database=Testnet;Port=3306;User Id=root;Password=12345;",
+                new MySqlServerVersion(new Version(8, 0, 2)) // Replace with your MySQL server version
+            );
+
+            return new AppDBContext(optionsBuilder.Options);
         }
     }
 }
