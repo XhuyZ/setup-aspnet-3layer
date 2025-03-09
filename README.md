@@ -2,7 +2,7 @@
 
 &#x20;&#x20;
 
-🛠 **Script này tự động tạo cấu trúc dự án 3-layer cho ASP.NET Core Web API trên Linux.**
+🛠 **Script này tự động tạo cấu trúc dự án 3-layer cho ASP.NET Core Web API trên Linux và Windows.**
 Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài đặt các package quan trọng.
 
 ---
@@ -11,8 +11,8 @@ Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài
 
 ✅ Tạo cấu trúc dự án 3-layer chuyên nghiệp:
 
-- 🏗 **API Layer** (Dự án Web API)
-- 🔄 **BLL Layer** (Tầng Business Logic)
+- 🏷 **API Layer** (Dự án Web API)
+- 💠 **BLL Layer** (Tầng Business Logic)
 - 💾 **DAL Layer** (Tầng Truy Cập Dữ Liệu)
 - 🛠 **Common Layer** (Thư viện dùng chung)
 
@@ -25,14 +25,14 @@ Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài
 
 ## 📌 Yêu Cầu Trước Khi Cài Đặt
 
-🔹 Đảm bảo hệ thống có sẵn các công cụ sau:
+🛩 Đảm bảo hệ thống có sẵn các công cụ sau:
 
-- .NET SDK 8 và runtime
-- Bash (Để chạy script trên Linux)
-- MySQL (Nếu sử dụng database này)
+- [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) và runtime
+- Bash (Trên Linux và Windows khi dùng GitBash)
+- [MySQL](https://dev.mysql.com/downloads/) (Nếu sử dụng database này)
 - Quyền `chmod` để thực thi script
 
-### 🔧 Hướng Dẫn Cài Đặt .NET SDK 8 và MySQL
+### 🛠 Hướng Dẫn Cài Đặt .NET SDK 8 và MySQL
 
 #### **Ubuntu**
 
@@ -48,6 +48,12 @@ sudo systemctl enable mysql
 brew install dotnet-sdk mysql
 brew services start mysql
 ```
+
+#### **Windows (Dùng GitBash)**
+
+1. Tải và cài đặt [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+2. Tải và cài đặt [MySQL](https://dev.mysql.com/downloads/installer/)
+3. Cài [GitBash](https://git-scm.com/downloads) nếu chưa có
 
 ---
 
@@ -75,13 +81,14 @@ chmod +x ~/script.sh
 4️⃣ **Sau khi hoàn tất, chạy project:**
 
 ```bash
+./db.sh
 cd ~/MyProject/API
 dotnet watch run
 ```
 
 ---
 
-## 📂 Cấu Trúc Dự Án Sau Khi Chạy Script
+## 📚 Cấu Trúc Dự Án Sau Khi Chạy Script
 
 ```
 ~/MyProject/
@@ -90,6 +97,7 @@ dotnet watch run
 │── DAL/        # Data Access Layer
 │── Common/     # Thư viện dùng chung
 ~/script.sh     # Script cài đặt
+~/db.sh
 ```
 
 ---
@@ -103,9 +111,9 @@ dotnet watch run
 
 ---
 
-## 📜 Giấy Phép
+## 📝 Giấy Phép
 
-📖 Mã nguồn mở theo **MIT License**
+📚 Mã nguồn mở theo **MIT License**
 
 ## 🤝 Đóng Góp
 
@@ -113,5 +121,5 @@ dotnet watch run
 
 ## 👨‍💻 Tác Giả
 
-🔗 GitHub: [XhuyZ](https://github.com/XhuyZ)
+👉 GitHub: [XhuyZ](https://github.com/XhuyZ)
 
