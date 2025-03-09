@@ -4,7 +4,7 @@
 
 &#x20;&#x20;
 
-🛠 **Script này tự động tạo cấu trúc dự án 3-layer cho ASP.NET Core Web API trên Linux và Windows.**
+🛠 **Script này tự động tạo cấu trúc dự án 3-layer cho ASP.NET Core Web API trên Linux,MacOs và Windows.**
 Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài đặt các package quan trọng.
 
 ---
@@ -31,8 +31,7 @@ Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài
 
 - [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) và runtime
 - Bash (Trên Linux và Windows khi dùng GitBash)
-- [MySQL](https://dev.mysql.com/downloads/) (Nếu sử dụng database này)
-- Quyền `chmod` để thực thi script
+- [MySQL](https://dev.mysql.com/downloads/) (Cài và đặt pass cho root là 12345 pass khác thì vô dòng 2055 sửa lại)
 
 ### 🛠 Hướng Dẫn Cài Đặt .NET SDK 8 và MySQL
 
