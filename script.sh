@@ -217,6 +217,7 @@ chmod +x setup_DAL.sh setup_BLL.sh setup_Common.sh
 ./setup_DAL.sh
 ./setup_BLL.sh
 ./setup_Common.sh
+./setup_API.sh
 
 log_message "All setup scripts completed successfully!"
 move_cursor $STATUS_ROW 0

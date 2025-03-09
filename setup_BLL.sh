@@ -49,6 +49,145 @@ namespace BLL.Mappers
 }
 EOL
 
+# Create service interfaces
+cat >"$INTERFACES_DIR/IItemService.cs" <<EOL
+using BLL.DTOs;
+
+namespace BLL.Interfaces
+{
+    public interface IItemService
+    {
+        Task<IEnumerable<ItemDTO>> GetAllAsync();
+        Task<ItemDTO?> GetByIdAsync(int id);
+        Task AddAsync(ItemDTO itemDto);
+        Task UpdateAsync(ItemDTO itemDto);
+        Task DeleteAsync(int id);
+    }
+}
+EOL
+
+cat >"$INTERFACES_DIR/ICategoryService.cs" <<EOL
+using BLL.DTOs;
+
+namespace BLL.Interfaces
+{
+    public interface ICategoryService
+    {
+        Task<IEnumerable<CategoryDTO>> GetAllAsync();
+        Task<CategoryDTO?> GetByIdAsync(int id);
+        Task AddAsync(CategoryDTO categoryDto);
+        Task UpdateAsync(CategoryDTO categoryDto);
+        Task DeleteAsync(int id);
+    }
+}
+EOL
+
+cat >"$INTERFACES_DIR/IUserService.cs" <<EOL
+using BLL.DTOs;
+
+namespace BLL.Interfaces
+{
+    public interface IUserService
+    {
+        Task<IEnumerable<UserDTO>> GetAllAsync();
+        Task<UserDTO?> GetByIdAsync(int id);
+        Task<UserDTO?> GetByUsernameAsync(string username);
+        Task<UserDTO?> GetByEmailAsync(string email);
+        Task AddAsync(UserDTO userDto);
+        Task UpdateAsync(UserDTO userDto);
+        Task DeleteAsync(int id);
+    }
+}
+EOL
+
+cat >"$INTERFACES_DIR/IOrderService.cs" <<EOL
+using BLL.DTOs;
+using DAL.Entities;
+
+namespace BLL.Interfaces
+{
+    public interface IOrderService
+    {
+        Task<IEnumerable<OrderDTO>> GetAllAsync();
+        Task<IEnumerable<OrderDTO>> GetByUserIdAsync(int userId);
+        Task<OrderDTO?> GetByIdAsync(int id);
+        Task<OrderDTO?> GetByIdWithDetailsAsync(int id);
+        Task<int> CreateOrderAsync(OrderDTO orderDto);
+        Task UpdateAsync(OrderDTO orderDto);
+        Task UpdateStatusAsync(int id, OrderStatus status);
+        Task DeleteAsync(int id);
+    }
+}
+EOL
+
+cat >"$INTERFACES_DIR/IOrderDetailService.cs" <<EOL
+using BLL.DTOs;
+
+namespace BLL.Interfaces
+{
+    public interface IOrderDetailService
+    {
+        Task<IEnumerable<OrderDetailDTO>> GetAllAsync();
+        Task<IEnumerable<OrderDetailDTO>> GetByOrderIdAsync(int orderId);
+        Task<OrderDetailDTO?> GetByIdAsync(int id);
+        Task AddAsync(OrderDetailDTO orderDetailDto);
+        Task AddRangeAsync(IEnumerable<OrderDetailDTO> orderDetailDtos);
+        Task UpdateAsync(OrderDetailDTO orderDetailDto);
+        Task DeleteAsync(int id);
+        Task DeleteByOrderIdAsync(int orderId);
+    }
+}
+EOL
+
+# Create exceptions
+cat >"$EXCEPTIONS_DIR/NotFoundException.cs" <<EOL
+namespace BLL.Exceptions
+{
+    public class NotFoundException : Exception
+    {
+        public NotFoundException() : base() { }
+        
+        public NotFoundException(string message) : base(message) { }
+        
+        public NotFoundException(string message, Exception innerException) 
+            : base(message, innerException) { }
+        
+        public NotFoundException(string name, object key)
+            : base($"Entity \"{name}\" ({key}) was not found.") { }
+    }
+}
+EOL
+
+cat >"$EXCEPTIONS_DIR/ValidationException.cs" <<EOL
+namespace BLL.Exceptions
+{
+    public class ValidationException : Exception
+    {
+        public ValidationException() : base() { }
+        
+        public ValidationException(string message) : base(message) { }
+        
+        public ValidationException(string message, Exception innerException) 
+            : base(message, innerException) { }
+    }
+}
+EOL
+
+cat >"$EXCEPTIONS_DIR/BusinessException.cs" <<EOL
+namespace BLL.Exceptions
+{
+    public class BusinessException : Exception
+    {
+        public BusinessException() : base() { }
+        
+        public BusinessException(string message) : base(message) { }
+        
+        public BusinessException(string message, Exception innerException) 
+            : base(message, innerException) { }
+    }
+}
+EOL
+
 # Update services to use AutoMapper
 cat >"$SERVICES_DIR/ItemService.cs" <<EOL
 using AutoMapper;
@@ -231,6 +370,75 @@ namespace BLL.Services
         public async Task DeleteAsync(int id)
         {
             await _orderRepository.DeleteAsync(id);
+        }
+    }
+}
+EOL
+
+cat >"$SERVICES_DIR/OrderDetailService.cs" <<EOL
+using AutoMapper;
+using BLL.DTOs;
+using BLL.Interfaces;
+using DAL.Entities;
+using DAL.Repositories.Interfaces;
+
+namespace BLL.Services
+{
+    public class OrderDetailService : IOrderDetailService
+    {
+        private readonly IOrderDetailRepository _orderDetailRepository;
+        private readonly IMapper _mapper;
+
+        public OrderDetailService(IOrderDetailRepository orderDetailRepository, IMapper mapper)
+        {
+            _orderDetailRepository = orderDetailRepository;
+            _mapper = mapper;
+        }
+
+        public async Task<IEnumerable<OrderDetailDTO>> GetAllAsync()
+        {
+            var orderDetails = await _orderDetailRepository.GetAllAsync();
+            return _mapper.Map<IEnumerable<OrderDetailDTO>>(orderDetails);
+        }
+
+        public async Task<IEnumerable<OrderDetailDTO>> GetByOrderIdAsync(int orderId)
+        {
+            var orderDetails = await _orderDetailRepository.GetByOrderIdAsync(orderId);
+            return _mapper.Map<IEnumerable<OrderDetailDTO>>(orderDetails);
+        }
+
+        public async Task<OrderDetailDTO?> GetByIdAsync(int id)
+        {
+            var orderDetail = await _orderDetailRepository.GetByIdAsync(id);
+            return _mapper.Map<OrderDetailDTO>(orderDetail);
+        }
+
+        public async Task AddAsync(OrderDetailDTO orderDetailDto)
+        {
+            var orderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
+            await _orderDetailRepository.AddAsync(orderDetail);
+        }
+
+        public async Task AddRangeAsync(IEnumerable<OrderDetailDTO> orderDetailDtos)
+        {
+            var orderDetails = _mapper.Map<IEnumerable<OrderDetail>>(orderDetailDtos);
+            await _orderDetailRepository.AddRangeAsync(orderDetails);
+        }
+
+        public async Task UpdateAsync(OrderDetailDTO orderDetailDto)
+        {
+            var orderDetail = _mapper.Map<OrderDetail>(orderDetailDto);
+            await _orderDetailRepository.UpdateAsync(orderDetail);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            await _orderDetailRepository.DeleteAsync(id);
+        }
+
+        public async Task DeleteByOrderIdAsync(int orderId)
+        {
+            await _orderDetailRepository.DeleteByOrderIdAsync(orderId);
         }
     }
 }
