@@ -1,5 +1,6 @@
-# 🚀 Script Cài Đặt ASP.NET 3-Layer
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/14528c50-7296-43bc-8c6e-2e932aa1695a)# 
+🚀 Script Cài Đặt ASP.NET 3-Layer
+
 
 &#x20;&#x20;
 
