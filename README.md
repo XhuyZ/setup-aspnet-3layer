@@ -1,41 +1,57 @@
-![image](https://github.com/user-attachments/assets/14528c50-7296-43bc-8c6e-2e932aa1695a)# 
-🚀 Script Cài Đặt ASP.NET 3-Layer
+# 🚀 ASP.NET 3-Layer Setup Script
 
+🛠 **This script automatically generates a 3-layer architecture for ASP.NET Core Web API on Linux, macOS, and Windows.**
+It sets up the necessary directories, initializes the project, and installs essential packages.
 
-&#x20;&#x20;
+![250310_03h34m59s_screenshot](https://github.com/user-attachments/assets/7bb4723b-86e7-47c8-98ac-b381da53daf6)
 
-🛠 **Script này tự động tạo cấu trúc dự án 3-layer cho ASP.NET Core Web API trên Linux,MacOs và Windows.**
-Nó giúp thiết lập thư mục cần thiết, khởi tạo dự án và cài đặt các package quan trọng.
 
 ---
 
-## ✨ Tính Năng
+## 📜 Table of Contents
 
-✅ Tạo cấu trúc dự án 3-layer chuyên nghiệp:
-
-- 🏷 **API Layer** (Dự án Web API)
-- 💠 **BLL Layer** (Tầng Business Logic)
-- 💾 **DAL Layer** (Tầng Truy Cập Dữ Liệu)
-- 🛠 **Common Layer** (Thư viện dùng chung)
-
-✅ Tự động khởi tạo dự án bằng lệnh .NET CLI
-✅ Cấu hình phụ thuộc giữa các tầng
-✅ Cài đặt các gói NuGet cần thiết
-✅ Hiển thị tiến trình cài đặt trực quan 🎯
+- [✨ Features](#features)
+- [📌 Prerequisites](#prerequisites)
+- [🚀 Installation Guide](#installation-guide)
+  - [Ubuntu](#ubuntu)
+  - [macOS](#macos)
+  - [Windows (Using GitBash)](#windows-using-gitbash)
+- [🔧 Usage Instructions](#usage-instructions)
+- [📚 Project Structure](#project-structure)
+- [⚠️ Notes](#notes)
+- [📝 License](#license)
+- [🤝 Contributing](#contributing)
+- [👨‍💻 Author](#author)
 
 ---
 
-## 📌 Yêu Cầu Trước Khi Cài Đặt
+## ✨ Features
 
-🛩 Đảm bảo hệ thống có sẵn các công cụ sau:
+✅ Automatically creates a professional 3-layer project structure:
 
-- [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) và runtime
-- Bash (Trên Linux và Windows khi dùng GitBash)
-- [MySQL](https://dev.mysql.com/downloads/) (Cài và đặt pass cho root là 12345 pass khác thì vô dòng 2055 sửa lại)
+- 🏷 **API Layer** (Web API project)
+- 💠 **BLL Layer** (Business Logic Layer)
+- 💾 **DAL Layer** (Data Access Layer)
+- 🛠 **Common Layer** (Shared utilities)
 
-### 🛠 Hướng Dẫn Cài Đặt .NET SDK 8 và MySQL
+✅ Initializes the project using .NET CLI
+✅ Configures dependencies between layers
+✅ Installs required NuGet packages
+✅ Displays a visual progress indicator 🎯
 
-#### **Ubuntu**
+---
+
+## 📌 Prerequisites
+
+Ensure your system has the following tools installed:
+
+- [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) and runtime
+- Bash (Required for Linux and Windows when using GitBash)
+- [MySQL](https://dev.mysql.com/downloads/) (Set the root password to `12345`, or modify it in line 2055 of the script)
+
+### 🛠 Installing .NET SDK 8 and MySQL
+
+#### Ubuntu
 
 ```bash
 sudo apt update && sudo apt install -y dotnet-sdk-8.0 aspnetcore-runtime-8.0 mysql-server
@@ -43,43 +59,43 @@ sudo systemctl start mysql
 sudo systemctl enable mysql
 ```
 
-#### **macOS**
+#### macOS
 
 ```bash
 brew install dotnet-sdk mysql
 brew services start mysql
 ```
 
-#### **Windows (Dùng GitBash)**
+#### Windows (Using GitBash)
 
-1. Tải và cài đặt [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
-2. Tải và cài đặt [MySQL](https://dev.mysql.com/downloads/installer/)
-3. Cài [GitBash](https://git-scm.com/downloads) nếu chưa có
+1. Download and install [.NET SDK 8](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+2. Download and install [MySQL](https://dev.mysql.com/downloads/installer/)
+3. Install [GitBash](https://git-scm.com/downloads) if not already installed
 
 ---
 
-## 🚀 Hướng Dẫn Sử Dụng
+## 🚀 Usage Instructions
 
-1️⃣ **Tải về hoặc clone script này về máy:**
+### 1️⃣ Clone the repository:
 
 ```bash
 git clone https://github.com/XhuyZ/setup-aspnet-3layer.git
 cd setup-aspnet-3layer
 ```
 
-2️⃣ **Cấp quyền thực thi cho script:**
+### 2️⃣ Grant execution permission to the script:
 
 ```bash
 chmod +x ~/script.sh
 ```
 
-3️⃣ **Chạy script với tên dự án mong muốn:**
+### 3️⃣ Run the script with your desired project name:
 
 ```bash
 ~/script.sh (Input Your Solution Name)
 ```
 
-4️⃣ **Sau khi hoàn tất, chạy project:**
+### 4️⃣ Once the setup is complete, start the project:
 
 ```bash
 ./db.sh
@@ -89,38 +105,42 @@ dotnet watch run
 
 ---
 
-## 📚 Cấu Trúc Dự Án Sau Khi Chạy Script
+## 📚 Project Structure
 
 ```
 ~/MyProject/
-│── API/        # Dự án Web API
+│── API/        # Web API project
 │── BLL/        # Business Logic Layer
 │── DAL/        # Data Access Layer
-│── Common/     # Thư viện dùng chung
-~/script.sh     # Script cài đặt
-~/db.sh
+│── Common/     # Shared utilities
+~/script.sh     # Installation script
+~/db.sh         # Database setup script
 ```
 
 ---
 
-## ⚠️ Ghi Chú
+## ⚠️ Notes
 
-- 🏁 Script có hiển thị tiến trình cài đặt trực quan 🎯
-- 🔐 Hãy đảm bảo script có quyền thực thi trước khi chạy
-- 🛠 Hỗ trợ MySQL thông qua `Pomelo.EntityFrameworkCore`
-- 📌 Cấu trúc dự án tuân theo chuẩn của ASP.NET Core Web API
+- 🏁 The script provides a visual installation progress 🎯
+- 🔐 Ensure the script has execution permission before running
+- 🛠 Supports MySQL using `Pomelo.EntityFrameworkCore`
+- 📌 Follows standard ASP.NET Core Web API architecture
 
 ---
 
-## 📝 Giấy Phép
+## 📝 License
 
-📚 Mã nguồn mở theo **MIT License**
+📚 Open-source under the **MIT License**
 
-## 🤝 Đóng Góp
+---
 
-🚀 Mọi đóng góp đều được hoan nghênh! Hãy mở **Issue** hoặc gửi **Pull Request**.
+## 🤝 Contributing
 
-## 👨‍💻 Tác Giả
+🚀 Contributions are welcome! Feel free to open an **Issue** or submit a **Pull Request**.
+
+---
+
+## 👨‍💻 Author
 
 👉 GitHub: [XhuyZ](https://github.com/XhuyZ)
 
