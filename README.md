@@ -1,27 +1,25 @@
 # 🚀 ASP.NET 3-Layer Setup Script
+![250310_03h34m59s_screenshot](https://github.com/user-attachments/assets/346ba94d-e31d-44c8-ab34-04caf77e4cd4)
 
 🛠 **This script automatically generates a 3-layer architecture for ASP.NET Core Web API on Linux, macOS, and Windows.**
 It sets up the necessary directories, initializes the project, and installs essential packages.
-
-![250310_03h34m59s_screenshot](https://github.com/user-attachments/assets/7bb4723b-86e7-47c8-98ac-b381da53daf6)
-
 
 ---
 
 ## 📜 Table of Contents
 
-- [✨ Features](#features)
-- [📌 Prerequisites](#prerequisites)
-- [🚀 Installation Guide](#installation-guide)
-  - [Ubuntu](#ubuntu)
-  - [macOS](#macos)
-  - [Windows (Using GitBash)](#windows-using-gitbash)
-- [🔧 Usage Instructions](#usage-instructions)
-- [📚 Project Structure](#project-structure)
-- [⚠️ Notes](#notes)
-- [📝 License](#license)
-- [🤝 Contributing](#contributing)
-- [👨‍💻 Author](#author)
+- [✨ Features](#-features)
+- [📌 Prerequisites](#-prerequisites)
+- [🚀 Installation Guide](#-installation-guide)
+  - [Ubuntu](#-ubuntu)
+  - [macOS](#-macos)
+  - [Windows (Using GitBash)](#-windows-using-gitbash)
+- [🔧 Usage Instructions](#-usage-instructions)
+- [📚 Project Structure](#-project-structure)
+- [⚠️ Notes](#-notes)
+- [📝 License](#-license)
+- [🤝 Contributing](#-contributing)
+- [👨‍💻 Author](#-author)
 
 ---
 
@@ -34,10 +32,10 @@ It sets up the necessary directories, initializes the project, and installs esse
 - 💾 **DAL Layer** (Data Access Layer)
 - 🛠 **Common Layer** (Shared utilities)
 
-✅ Initializes the project using .NET CLI
-✅ Configures dependencies between layers
-✅ Installs required NuGet packages
-✅ Displays a visual progress indicator 🎯
+✅ Initializes the project using .NET CLI  
+✅ Configures dependencies between layers  
+✅ Installs required NuGet packages  
+✅ Displays a visual progress indicator 🎯  
 
 ---
 
